@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Flight | TourNest</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="booking-page">
+
+    <div class="booking-card">
+        <div class="info-panel">
+            <div>
+                <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+                <h2 style="margin-top:20px;">Reserve Your <span>Adventure</span></h2>
+            </div>
+            <ul class="features-list">
+                <li><i class="fas fa-shield-alt"></i> Safe & Secure Payments</li>
+                <li><i class="fas fa-star"></i> 5-Star Experience</li>
+            </ul>
+            <p>© 2026 TourPiyush</p>
+        </div>
+
+        <div class="form-panel">
+            <h3>Booking Details</h3>
+            <form id="mainBookingForm" action="https://formspree.io/f/xpqrezag" method="POST">
+                <div class="form-grid">
+                    <div class="input-group full-width"><label>Full Name</label><input type="text" name="name" required></div>
+                    <div class="input-group"><label>Email</label><input type="email" name="email" required></div>
+                    <div class="input-group"><label>Phone</label><input type="tel" name="phone" required></div>
+                    <div class="input-group">
+                        <label>Destination</label>
+                        <select name="dest" required>
+                            <option value="">Select</option>
+                            <option>Japan</option><option>Italy</option><option>France</option><option>India</option>
+                        </select>
+                    </div>
+                    <div class="input-group"><label>Date</label><input type="date" name="date" required></div>
+                    
+                    <div class="input-group full-width">
+                        <label>Preferred Flight</label>
+                        <div class="flight-options">
+                            <label class="flight-card">
+                                <input type="radio" name="flight" value="IndiGo" checked required>
+                                <div class="flight-content">
+                                    <img src="https://companieslogo.com/img/orig/INDIGO.NS-77f45585.png?t=1745724543" width="40">
+                                    <div class="f-info"><strong>IndiGo</strong><br><small>06:00 AM</small></div>
+                                    <span>₹5,000</span>
+                                </div>
+                            </label>
+                            <label class="flight-card">
+                                <input type="radio" name="flight" value="Air India">
+                                <div class="flight-content">
+                                    <img src="https://airhex.com/images/airline-logos/air-india.png" width="40">
+                                    <div class="f-info"><strong>Air India</strong><br><small>09:00 AM</small></div>
+                                    <span>₹7,500</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="full-width"><button type="submit" class="submit-btn">PROCEED TO PAYMENT</button></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="paymentModal" class="payment-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3><i class="fas fa-lock"></i> Secure Payment</h3>
+            <div class="pay-tabs">
+                <button type="button" id="tabCard" onclick="switchPay('card')" class="tab-btn active-tab">Card</button>
+                <button type="button" id="tabUpi" onclick="switchPay('upi')" class="tab-btn">UPI / QR</button>
+            </div>
+            <div id="cardSection" class="card-box">
+                <input type="text" placeholder="Card Number" class="dark-input">
+                <div style="display:flex; gap:10px; margin-top:10px;">
+                    <input type="text" placeholder="MM/YY" class="dark-input">
+                    <input type="password" placeholder="CVV" class="dark-input">
+                </div>
+            </div>
+            <div id="upiSection" class="card-box" style="display:none; text-align:center;">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=tourplyush@upi" width="130">
+                <p>Scan QR to Pay</p>
+            </div>
+            <button type="button" id="finalPayBtn" class="submit-btn">CONFIRM PAYMENT</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
